@@ -1,7 +1,15 @@
 ---
 import Icon from './Icon.astro';
+import { t, type Lang } from "../lib/i18n";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
 
 const currentYear = new Date().getFullYear();
+
 ---
 
 <footer>

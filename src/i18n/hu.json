@@ -1,0 +1,28 @@
+{
+  "site.title": "Erdei Réka",
+  "site.role": "Üzleti elemző & Marketing stratéga",
+  
+  "heroTitle": "Üzleti elemzés és marketing stratégia",
+  "heroSubtitle": "Az üzleti célokat működő kampányokká alakítom.",
+  "cta": "KAPCSOLAT",
+  "hero.name": "Mészáros-Erdei Réka",
+  "hero.tagline": "Üzleti elemzés × Marketing stratégia",
+  "hero.role.dev": "Elemző",
+  "hero.role.marketing": "Marketing szakértő",
+  "hero.role.coach": "Folyamat mentor",
+    
+  "skills.fullstack": "Full Stack",
+  "skills.fullstack.desc": "Szoftverfejlesztés az üzleti logikától a felhasználói felületig.",
+
+  "skills.leader": "Ipari Tapasztalat",
+  "skills.leader.desc": "Valós vállalati környezetben szerzett gyakorlat és döntéstámogatás.",
+
+  "skills.strategy": "Stratégiai gondolkodás",
+  "skills.strategy.desc": "Elemzés → struktúra → üzletileg értelmes kampányok.",
+
+  "nav.home": "Kezdőlap",
+  "nav.work": "Referenciák",
+  "nav.about": "Rólam",
+  "nav.switch": "EN"
+
+}
