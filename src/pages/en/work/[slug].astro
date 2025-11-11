@@ -11,15 +11,19 @@ interface Props {
 	entry: CollectionEntry<'work'>;
 }
 
-// This is a dynamic route that generates a page for every Markdown file in src/content/
-// Read more about dynamic routes and this `getStaticPaths` function in the Astro docs:
-// https://docs.astro.build/en/core-concepts/routing/#dynamic-routes
 export async function getStaticPaths() {
 	const work = await getCollection('work');
-	return work.map((entry) => ({
-		params: { slug: entry.id },
-		props: { entry },
-	}));
+
+	// CSAK az angol mappa tartalma
+	const filtered = work.filter((entry) => entry.id.startsWith("en/"));
+
+	return filtered.map((entry) => {
+		const slug = entry.id.split("/")[1]; // "en/project" → "project"
+		return {
+			params: { slug },
+			props: { entry },
+		};
+	});
 }
 
 const { entry } = Astro.props;
@@ -33,7 +37,10 @@ const lang = "en";
 		<div class="stack gap-15">
 			<header>
 				<div class="wrapper stack gap-2">
-					<a class="back-link" href="/work/"><Icon icon="arrow-left" /> Work</a>
+
+					<!-- VISSZALINK angol listához -->
+					<a class="back-link" href="/en/work/"><Icon icon="arrow-left" /> Work</a>
+
 					<Hero title={entry.data.title} align="start">
 						<div class="details">
 							<div class="tags">
@@ -56,6 +63,7 @@ const lang = "en";
 		<ContactCTA />
 	</div>
 </BaseLayout>
+
 
 <style>
 	header {
