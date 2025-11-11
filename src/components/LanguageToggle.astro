@@ -1,0 +1,47 @@
+---
+import { t, type Lang } from "../lib/i18n";
+
+export interface Props {
+  lang: Lang;
+  href: string; // ezt a Nav-ból számoljuk ki (switchHref)
+}
+
+const { lang, href } = Astro.props;
+---
+
+<button
+  onclick={`window.location='${href}'`}
+  class="lang-toggle"
+  aria-label="Language Switch"
+>
+  {t(lang, "nav.switch")}
+</button>
+
+<style>
+  .lang-toggle {
+    appearance: none;
+    border: 1px solid var(--gray-600);
+    background: transparent;
+    padding: 0.35rem 0.9rem;
+    border-radius: 0.65rem;
+    font-size: var(--text-sm);
+    color: var(--gray-300);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .lang-toggle:hover {
+    border-color: var(--accent-regular);
+    color: var(--accent-regular);
+  }
+
+  :root.theme-dark .lang-toggle {
+    border-color: var(--gray-500);
+    color: var(--gray-300);
+  }
+
+  :root.theme-dark .lang-toggle:hover {
+    border-color: var(--accent-regular);
+    color: var(--accent-regular);
+  }
+</style>

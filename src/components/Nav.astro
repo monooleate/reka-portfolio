@@ -3,6 +3,7 @@ import Icon from './Icon.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import { t, type Lang } from "../lib/i18n";
 import type { iconPaths } from './IconPaths';
+import LanguageToggle from "./LanguageToggle.astro";
 
 export interface Props {
   lang: Lang;
@@ -95,9 +96,7 @@ const switchHref = `/${otherLang}${translatedSlug}`;
 		<div class="menu-footer">
 
 			<!-- Nyelvváltó -->
-			<a href={switchHref} class="lang-switch">
-				{t(lang, "nav.switch")}
-			</a>
+			<LanguageToggle lang={lang} href={switchHref} />
 
 			<!-- Theme toggle -->
 			<div class="theme-toggle">
