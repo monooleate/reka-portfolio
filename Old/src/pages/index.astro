@@ -1,0 +1,9 @@
+---
+export const prerender = false;
+
+const langHeader = Astro.request.headers.get("accept-language") || "";
+const lang = langHeader.toLowerCase().startsWith("en") ? "hu" : "en";
+
+// Server-side redirect (HTTP 302)
+return Astro.redirect(`/${lang}/`);
+---

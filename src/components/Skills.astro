@@ -7,66 +7,237 @@ export interface Props {
 }
 
 const { lang } = Astro.props;
+
+const coreSkills = [
+  { key: 'analysis', icon: 'clipboard-text' as const },
+  { key: 'digital', icon: 'lightning' as const },
+  { key: 'agile', icon: 'kanban' as const },
+];
+
+const tools = [
+  'Microsoft 365',
+  'Jira',
+  'Confluence',
+  'OSIsoft PI',
+  'Python',
+  'SQL',
+  'WordPress',
+  'Figma',
+];
+
+const softSkills = [
+  'skills.soft.analytical',
+  'skills.soft.customer',
+  'skills.soft.stakeholder',
+  'skills.soft.communication',
+];
 ---
 
-<section class="box skills">
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="terminal-window" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>{t(lang, "skills.fullstack")}</h2>
-		<p>{t(lang, "skills.fullstack.desc")}</p>
-	</div>
+<section class="skills-section">
+  <div class="skills-grid">
+    {coreSkills.map((skill) => (
+      <div class="skill-card">
+        <div class="skill-icon">
+          <Icon icon={skill.icon} color="var(--accent-regular)" size="2.5rem" gradient />
+        </div>
+        <h3>{t(lang, `skills.${skill.key}`)}</h3>
+        <p>{t(lang, `skills.${skill.key}.desc`)}</p>
+      </div>
+    ))}
+  </div>
 
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="trophy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>{t(lang, "skills.leader")}</h2>
-		<p>{t(lang, "skills.leader.desc")}</p>
-	</div>
+  <div class="skills-extra">
+    <div class="tools-section">
+      <h4>
+        <Icon icon="gear" color="var(--accent-regular)" size="1.25rem" />
+        {t(lang, "skills.tools.title")}
+      </h4>
+      <div class="tools-grid">
+        {tools.map((tool) => (
+          <span class="tool-pill">{tool}</span>
+        ))}
+      </div>
+    </div>
 
-	<div class="stack gap-2 lg:gap-4">
-		<Icon icon="strategy" color="var(--accent-regular)" size="2.5rem" gradient />
-		<h2>{t(lang, "skills.strategy")}</h2>
-		<p>{t(lang, "skills.strategy.desc")}</p>
-	</div>
+    <div class="soft-skills-section">
+      <h4>
+        <Icon icon="users-three" color="var(--accent-regular)" size="1.25rem" />
+        {t(lang, "skills.soft.title")}
+      </h4>
+      <ul class="soft-skills-list">
+        {softSkills.map((skill) => (
+          <li>{t(lang, skill)}</li>
+        ))}
+      </ul>
+    </div>
+  </div>
 </section>
 
-
 <style>
-	.box {
-		border: 1px solid var(--gray-800);
-		border-radius: 0.75rem;
-		padding: 1.5rem;
-		background-color: var(--gray-999_40);
-		box-shadow: var(--shadow-sm);
-	}
+  .skills-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-	.skills {
-		display: flex;
-		flex-direction: column;
-		gap: 3rem;
-	}
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 
-	.skills h2 {
-		font-size: var(--text-lg);
-	}
+  .skill-card {
+    background: var(--gradient-subtle);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    transition: transform var(--hover-transition), box-shadow var(--hover-transition), border-color var(--hover-transition);
+  }
 
-	.skills p {
-		color: var(--gray-400);
-	}
+  .skill-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-overlay);
+  }
 
-	@media (min-width: 50em) {
-		.box {
-			border-radius: 1.5rem;
-			padding: 2.5rem;
-		}
+  .skill-icon {
+    margin-bottom: 1rem;
+  }
 
-		.skills {
-			display: grid;
-			grid-template-columns: repeat(3, 1fr);
-			gap: 5rem;
-		}
+  .skill-card h3 {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--gray-0);
+    margin: 0 0 0.75rem;
+  }
 
-		.skills h2 {
-			font-size: var(--text-2xl);
-		}
-	}
+  .skill-card p {
+    font-size: var(--text-sm);
+    color: var(--gray-400);
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .skills-extra {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .tools-section,
+  .soft-skills-section {
+    background: var(--gradient-subtle);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    transition: border-color var(--hover-transition);
+  }
+
+  .tools-section:hover,
+  .soft-skills-section:hover {
+    border-color: var(--accent-subtle-overlay);
+  }
+
+  .tools-section h4,
+  .soft-skills-section h4 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-base);
+    color: var(--gray-0);
+    margin: 0 0 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--gray-800);
+  }
+
+  .tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tool-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--gray-999);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    color: var(--gray-300);
+    transition: all var(--hover-transition);
+  }
+
+  .tool-pill:hover {
+    border-color: var(--accent-overlay);
+    color: var(--gray-100);
+    background: var(--accent-subtle-overlay);
+  }
+
+  :root.theme-dark .tool-pill:hover {
+    color: var(--accent-dark);
+    border-color: var(--accent-dark);
+  }
+
+  .soft-skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .soft-skills-list li {
+    font-size: var(--text-sm);
+    color: var(--gray-300);
+    padding-left: 1.25rem;
+    position: relative;
+  }
+
+  .soft-skills-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gradient-accent);
+  }
+
+  @media (min-width: 50em) {
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .skill-card {
+      padding: 2.5rem;
+    }
+
+    .skill-card h3 {
+      font-size: var(--text-xl);
+    }
+
+    .skill-card p {
+      font-size: var(--text-base);
+    }
+
+    .skills-extra {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2rem;
+    }
+
+    .tools-section,
+    .soft-skills-section {
+      padding: 2rem;
+    }
+
+    .tools-section h4,
+    .soft-skills-section h4 {
+      font-size: var(--text-lg);
+    }
+  }
 </style>

@@ -1,0 +1,213 @@
+---
+import Icon from './Icon.astro';
+import { t, type Lang } from "../lib/i18n";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const educations = [
+  { key: 'msc', icon: 'graduation-cap' as const },
+  { key: 'bsc', icon: 'certificate' as const },
+];
+
+const languages = ['hu', 'en', 'de', 'es'];
+---
+
+<section class="education-section">
+  <div class="education-grid">
+    <div class="education-block">
+      <div class="block-header">
+        <Icon icon="graduation-cap" color="var(--accent-regular)" size="1.75rem" gradient />
+        <h3>{t(lang, "education.title")}</h3>
+      </div>
+
+      <div class="education-list">
+        {educations.map((edu) => (
+          <div class="education-item">
+            <div class="edu-icon">
+              <Icon icon={edu.icon} color="var(--accent-regular)" size="1.5rem" />
+            </div>
+            <div class="edu-content">
+              <h4 class="degree">{t(lang, `education.${edu.key}.degree`)}</h4>
+              <p class="school">{t(lang, `education.${edu.key}.school`)}</p>
+              <span class="period">{t(lang, `education.${edu.key}.period`)}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="languages-block">
+      <div class="block-header">
+        <Icon icon="globe" color="var(--accent-regular)" size="1.75rem" gradient />
+        <h3>{t(lang, "languages.title")}</h3>
+      </div>
+
+      <div class="languages-list">
+        {languages.map((langKey) => (
+          <div class="language-item">
+            <span class="language-flag">{langKey === 'hu' ? '🇭🇺' : langKey === 'en' ? '🇬🇧' : langKey === 'de' ? '🇩🇪' : '🇪🇸'}</span>
+            <span class="language-text">{t(lang, `languages.${langKey}`)}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .education-section {
+    padding: 2rem 0;
+  }
+
+  .education-grid {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .education-block,
+  .languages-block {
+    background: var(--gradient-subtle);
+    border: 1px solid var(--gray-800);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .education-block:hover,
+  .languages-block:hover {
+    border-color: var(--accent-regular);
+  }
+
+  .block-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-800);
+  }
+
+  .block-header h3 {
+    font-size: var(--text-xl);
+    color: var(--gray-0);
+    margin: 0;
+  }
+
+  .education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .education-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--gray-999);
+    border-radius: 1rem;
+    border: 1px solid var(--gray-800);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .education-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .edu-icon {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0.25rem;
+  }
+
+  .edu-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .degree {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--gray-0);
+    margin: 0;
+  }
+
+  .school {
+    font-size: var(--text-sm);
+    color: var(--gray-300);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .period {
+    font-size: var(--text-sm);
+    color: var(--accent-regular);
+    font-weight: 500;
+    margin-top: 0.25rem;
+  }
+
+  :root.theme-dark .period {
+    color: var(--accent-dark);
+  }
+
+  .languages-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .language-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--gray-999);
+    border-radius: 0.75rem;
+    border: 1px solid var(--gray-800);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .language-item:hover {
+    transform: translateX(4px);
+    border-color: var(--accent-regular);
+  }
+
+  .language-flag {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .language-text {
+    font-size: var(--text-sm);
+    color: var(--gray-200);
+  }
+
+  @media (min-width: 50em) {
+    .education-grid {
+      grid-template-columns: 2fr 1fr;
+    }
+
+    .education-block,
+    .languages-block {
+      padding: 2rem;
+    }
+
+    .block-header h3 {
+      font-size: var(--text-2xl);
+    }
+
+    .degree {
+      font-size: var(--text-lg);
+    }
+
+    .languages-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

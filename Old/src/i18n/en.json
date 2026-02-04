@@ -1,0 +1,26 @@
+{
+  "site.title": "Réka Erdei",
+  "site.role": "Business Analyst & Marketing Strategist",
+  "heroTitle": "Business Analysis and Marketing Strategy",
+  "heroSubtitle": "I turn business goals into effective campaigns.",
+  "cta": "CONTACT",
+
+  
+
+  "skills.fullstack": "Full Stack",
+  "skills.fullstack.desc": "Software development from business logic to user interface.",
+
+  "skills.leader": "Industry Expertise",
+  "skills.leader.desc": "Experience in real enterprise environments and decision support.",
+
+  "skills.strategy": "Strategy-Minded",
+  "skills.strategy.desc": "Analysis → structure → marketing campaigns that make sense.",
+
+  "nav.home": "Home",
+  "nav.work": "Work",
+  "nav.about": "About",
+  "nav.switch": "HU"
+
+
+
+}

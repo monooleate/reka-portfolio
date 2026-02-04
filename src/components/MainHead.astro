@@ -4,18 +4,108 @@ import '../styles/global.css';
 interface Props {
 	title?: string | undefined;
 	description?: string | undefined;
+	lang?: string;
+	canonicalUrl?: string;
 }
 
 const {
-	title,
-	description,
+	title = "Réka Mészáros-Erdei | Business Analyst",
+	description = "Business Analyst with expertise in digital transformation, IT strategy, and process optimization.",
+	lang = "en",
+	canonicalUrl,
 } = Astro.props;
+
+const siteUrl = Astro.site?.href || "https://rekameszaroserdei.com";
+const pageUrl = canonicalUrl || new URL(Astro.url.pathname, siteUrl).href;
+
+const personSchema = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	"name": "Réka Mészáros-Erdei",
+	"alternateName": "Mészáros-Erdei Réka",
+	"jobTitle": "Business Analyst",
+	"url": siteUrl,
+	"email": "erdeireka87@gmail.com",
+	"address": {
+		"@type": "PostalAddress",
+		"addressLocality": "Diósd",
+		"addressCountry": "HU"
+	},
+	"knowsLanguage": ["hu", "en", "de", "es"],
+	"alumniOf": {
+		"@type": "CollegeOrUniversity",
+		"name": "Budapest University of Technology and Economics"
+	},
+	"hasCredential": [
+		{
+			"@type": "EducationalOccupationalCredential",
+			"credentialCategory": "degree",
+			"name": "MSc in Chemical Engineering"
+		},
+		{
+			"@type": "EducationalOccupationalCredential",
+			"credentialCategory": "degree",
+			"name": "BSc in Chemical and Process Engineering"
+		}
+	],
+	"knowsAbout": [
+		"Business Analysis",
+		"Digital Transformation",
+		"IT Strategy",
+		"Agile Methodology",
+		"Process Optimization",
+		"Requirement Gathering",
+		"Stakeholder Management"
+	],
+	"worksFor": {
+		"@type": "Organization",
+		"name": "CommIT Smart"
+	}
+};
+
+const websiteSchema = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"name": "Réka Mészáros-Erdei Portfolio",
+	"url": siteUrl,
+	"inLanguage": ["hu", "en"],
+	"author": {
+		"@type": "Person",
+		"name": "Réka Mészáros-Erdei"
+	}
+};
 ---
 
 <meta charset="UTF-8" />
-<meta name="description" property="og:description" content={description} />
-<meta name="viewport" content="width=device-width" />
+<meta name="description" content={description} />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="generator" content={Astro.generator} />
+<meta name="author" content="Réka Mészáros-Erdei" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#7611a6" />
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={pageUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:locale" content={lang === "hu" ? "hu_HU" : "en_US"} />
+<meta property="og:locale:alternate" content={lang === "hu" ? "en_US" : "hu_HU"} />
+<meta property="og:site_name" content="Réka Mészáros-Erdei" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={pageUrl} />
+
+<!-- Alternate language versions -->
+<link rel="alternate" hreflang="en" href={`${siteUrl}en/`} />
+<link rel="alternate" hreflang="hu" href={`${siteUrl}hu/`} />
+<link rel="alternate" hreflang="x-default" href={`${siteUrl}en/`} />
+
 <title>{title}</title>
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -25,6 +115,11 @@ const {
 	href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,700;1,400&family=Rubik:wght@500;600&display=swap"
 	rel="stylesheet"
 />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
 <script is:inline>
 	// This code is inlined in the head to make dark mode instant & blocking.
 	const getThemePreference = () => {

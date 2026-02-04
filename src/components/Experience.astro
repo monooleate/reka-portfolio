@@ -1,0 +1,264 @@
+---
+import Icon from './Icon.astro';
+import { t, type Lang } from "../lib/i18n";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const experiences = [
+  {
+    key: 'commit',
+    descCount: 5,
+    current: true,
+  },
+  {
+    key: 'onespire',
+    descCount: 5,
+    current: false,
+  },
+  {
+    key: 'medicover',
+    descCount: 3,
+    current: false,
+  },
+  {
+    key: 'mol2',
+    descCount: 5,
+    current: false,
+  },
+  {
+    key: 'mol1',
+    descCount: 4,
+    current: false,
+  },
+];
+---
+
+<section class="experience-section">
+  <div class="section-header">
+    <Icon icon="briefcase" color="var(--accent-regular)" size="2rem" gradient />
+    <h2>{t(lang, "experience.title")}</h2>
+  </div>
+
+  <div class="timeline">
+    {experiences.map((exp, index) => (
+      <div class={`timeline-item ${exp.current ? 'current' : ''}`}>
+        <div class="timeline-marker">
+          <div class="marker-dot"></div>
+          {index < experiences.length - 1 && <div class="marker-line"></div>}
+        </div>
+
+        <div class="timeline-content">
+          <div class="timeline-header">
+            <div class="role-info">
+              <h3 class="role">{t(lang, `experience.${exp.key}.role`)}</h3>
+              <span class="company">{t(lang, `experience.${exp.key}.company`)}</span>
+            </div>
+            <span class="period">{t(lang, `experience.${exp.key}.period`)}</span>
+          </div>
+
+          <ul class="responsibilities">
+            {Array.from({ length: exp.descCount }, (_, i) => (
+              <li>{t(lang, `experience.${exp.key}.desc${i + 1}`)}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .experience-section {
+    padding: 2rem 0;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-header h2 {
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    color: var(--gray-0);
+    margin: 0;
+  }
+
+  .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    position: relative;
+  }
+
+  .timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .marker-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gradient-accent);
+    border: 3px solid var(--gray-999);
+    box-shadow: 0 0 0 2px var(--accent-overlay);
+    z-index: 1;
+    transition: transform var(--hover-transition), box-shadow var(--hover-transition);
+  }
+
+  .timeline-item.current .marker-dot {
+    width: 20px;
+    height: 20px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 3px var(--accent-regular), 0 0 0 6px var(--accent-overlay);
+    }
+    50% {
+      box-shadow: 0 0 0 4px var(--accent-regular), 0 0 0 10px transparent;
+    }
+  }
+
+  .marker-line {
+    width: 2px;
+    flex: 1;
+    min-height: 100%;
+    background: linear-gradient(180deg, var(--accent-regular) 0%, var(--gray-800) 100%);
+    margin-top: 0.5rem;
+  }
+
+  .timeline-content {
+    background: var(--gradient-subtle);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: transform var(--hover-transition), box-shadow var(--hover-transition), border-color var(--hover-transition);
+  }
+
+  .timeline-content:hover {
+    transform: translateX(3px);
+    box-shadow: var(--shadow-sm);
+    border-color: var(--accent-subtle-overlay);
+  }
+
+  .timeline-item.current .timeline-content {
+    border-color: var(--accent-regular);
+    background: linear-gradient(135deg, var(--accent-overlay) 0%, var(--gradient-subtle) 100%);
+  }
+
+  .timeline-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .role-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .role {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--gray-0);
+    margin: 0;
+  }
+
+  .company {
+    font-size: var(--text-md);
+    color: var(--accent-regular);
+    font-weight: 500;
+  }
+
+  :root.theme-dark .company {
+    color: var(--accent-dark);
+  }
+
+  .period {
+    font-size: var(--text-sm);
+    color: var(--gray-400);
+    font-weight: 400;
+    padding: 0.25rem 0.75rem;
+    background: var(--gray-999);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius-full);
+    width: fit-content;
+  }
+
+  .responsibilities {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .responsibilities li {
+    font-size: var(--text-sm);
+    color: var(--gray-300);
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .responsibilities li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-regular);
+  }
+
+  @media (min-width: 50em) {
+    .section-header h2 {
+      font-size: var(--text-3xl);
+    }
+
+    .timeline-item {
+      gap: 2rem;
+    }
+
+    .timeline-content {
+      padding: 2rem;
+    }
+
+    .timeline-header {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .role {
+      font-size: var(--text-xl);
+    }
+
+    .responsibilities li {
+      font-size: var(--text-base);
+    }
+  }
+</style>
