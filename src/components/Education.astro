@@ -72,14 +72,14 @@ const languages = ['hu', 'en', 'de', 'es'];
   .languages-block {
     background: var(--gradient-subtle);
     border: 1px solid var(--gray-800);
-    border-radius: 1.5rem;
+    border-radius: var(--radius-lg);
     padding: 1.5rem;
-    transition: border-color 0.3s ease;
+    transition: border-color var(--hover-transition);
   }
 
   .education-block:hover,
   .languages-block:hover {
-    border-color: var(--accent-regular);
+    border-color: var(--accent-subtle-overlay);
   }
 
   .block-header {
@@ -93,6 +93,7 @@ const languages = ['hu', 'en', 'de', 'es'];
 
   .block-header h3 {
     font-size: var(--text-xl);
+    font-weight: 500;
     color: var(--gray-0);
     margin: 0;
   }
@@ -108,9 +109,9 @@ const languages = ['hu', 'en', 'de', 'es'];
     gap: 1rem;
     padding: 1rem;
     background: var(--gray-999);
-    border-radius: 1rem;
+    border-radius: var(--radius-md);
     border: 1px solid var(--gray-800);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform var(--hover-transition), box-shadow var(--hover-transition);
   }
 
   .education-item:hover {
@@ -133,7 +134,7 @@ const languages = ['hu', 'en', 'de', 'es'];
 
   .degree {
     font-size: var(--text-base);
-    font-weight: 600;
+    font-weight: 500;
     color: var(--gray-0);
     margin: 0;
   }
@@ -168,14 +169,15 @@ const languages = ['hu', 'en', 'de', 'es'];
     gap: 0.75rem;
     padding: 0.75rem 1rem;
     background: var(--gray-999);
-    border-radius: 0.75rem;
+    border-radius: var(--radius-sm);
     border: 1px solid var(--gray-800);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform var(--hover-transition), border-color var(--hover-transition), background var(--hover-transition);
   }
 
   .language-item:hover {
-    transform: translateX(4px);
-    border-color: var(--accent-regular);
+    transform: translateX(3px);
+    border-color: var(--accent-subtle-overlay);
+    background: var(--accent-subtle-overlay);
   }
 
   .language-flag {

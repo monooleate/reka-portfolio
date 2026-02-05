@@ -109,40 +109,57 @@ const experiences = [
     flex-direction: column;
     align-items: center;
     position: relative;
+    width: 24px;
   }
 
   .marker-dot {
-    width: 14px;
-    height: 14px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: var(--gradient-accent);
-    border: 3px solid var(--gray-999);
-    box-shadow: 0 0 0 2px var(--accent-overlay);
+    background: var(--accent-regular);
+    flex-shrink: 0;
     z-index: 1;
-    transition: transform var(--hover-transition), box-shadow var(--hover-transition);
+    position: relative;
+  }
+
+  .marker-dot::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: var(--accent-subtle-overlay);
   }
 
   .timeline-item.current .marker-dot {
-    width: 20px;
-    height: 20px;
-    animation: pulse 2s ease-in-out infinite;
+    width: 14px;
+    height: 14px;
+    background: var(--gradient-accent);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  .timeline-item.current .marker-dot::before {
+    inset: -5px;
+    background: var(--accent-overlay);
   }
 
   @keyframes pulse {
     0%, 100% {
-      box-shadow: 0 0 0 3px var(--accent-regular), 0 0 0 6px var(--accent-overlay);
+      transform: scale(1);
+      opacity: 1;
     }
     50% {
-      box-shadow: 0 0 0 4px var(--accent-regular), 0 0 0 10px transparent;
+      transform: scale(1.15);
+      opacity: 0.9;
     }
   }
 
   .marker-line {
     width: 2px;
     flex: 1;
-    min-height: 100%;
-    background: linear-gradient(180deg, var(--accent-regular) 0%, var(--gray-800) 100%);
+    min-height: calc(100% - 12px);
+    background: linear-gradient(180deg, var(--accent-regular) 0%, var(--gray-700) 100%);
     margin-top: 0.5rem;
+    border-radius: 1px;
   }
 
   .timeline-content {

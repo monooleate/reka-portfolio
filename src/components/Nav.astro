@@ -172,16 +172,16 @@ const switchHref = `/${otherLang}${translatedSlug}`;
 		font-family: var(--font-brand);
 		font-weight: 500;
 		margin-bottom: 1.5rem;
-		background: var(--gray-999);
-		backdrop-filter: blur(10px);
-		-webkit-backdrop-filter: blur(10px);
-		background: rgba(var(--gray-999-basis), 0.85);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		background: rgba(var(--gray-999-basis), 0.9);
 		border-bottom: 1px solid var(--gray-800);
-		transition: box-shadow 0.3s ease;
+		transition: box-shadow var(--hover-transition), border-color var(--hover-transition);
 	}
 
 	nav.scrolled {
-		box-shadow: var(--shadow-md);
+		box-shadow: var(--shadow-sm);
+		border-bottom-color: var(--accent-subtle-overlay);
 	}
 
 	.menu-header {
@@ -204,19 +204,24 @@ const switchHref = `/${otherLang}${translatedSlug}`;
 		position: relative;
 		display: flex;
 		border: 0;
-		border-radius: 999rem;
+		border-radius: var(--radius-full);
 		padding: 0.5rem;
 		font-size: 1.5rem;
-		color: var(--gray-300);
-		background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
-		box-shadow: var(--shadow-md);
+		color: var(--gray-0);
+		background: var(--accent-regular);
+		box-shadow: var(--shadow-sm);
+		cursor: pointer;
+		transition: transform var(--hover-transition), background var(--hover-transition);
+	}
+
+	.menu-button:hover {
+		transform: scale(1.05);
+		background: var(--accent-dark);
 	}
 
 	.menu-button[aria-expanded='true'] {
-		color: var(--gray-0);
-		background:
-			linear-gradient(180deg, var(--gray-600), transparent),
-			radial-gradient(var(--gray-900), var(--gray-800) 150%);
+		color: var(--accent-text-over);
+		background: var(--accent-dark);
 	}
 
 	.menu-button[hidden] {
@@ -224,12 +229,7 @@ const switchHref = `/${otherLang}${translatedSlug}`;
 	}
 
 	.menu-button::before {
-		position: absolute;
-		inset: -1px;
-		content: '';
-		background: var(--gradient-stroke);
-		border-radius: 999rem;
-		z-index: -1;
+		display: none;
 	}
 
 	.menu-content {
@@ -253,12 +253,18 @@ const switchHref = `/${otherLang}${translatedSlug}`;
 
 	.link {
 		display: inline-block;
-		color: var(--gray-300);
+		color: var(--gray-400);
 		text-decoration: none;
+		transition: color var(--hover-transition);
+	}
+
+	.link:hover {
+		color: var(--gray-0);
 	}
 
 	.link[aria-current] {
 		color: var(--gray-0);
+		font-weight: 600;
 	}
 
 	.menu-footer {
@@ -270,8 +276,8 @@ const switchHref = `/${otherLang}${translatedSlug}`;
 		gap: 0.75rem;
 		padding: 1.5rem 2rem 1.5rem 1.5rem;
 		background-color: var(--gray-999);
-		border-radius: 0 0 0.75rem 0.75rem;
-		box-shadow: var(--shadow-lg);
+		border-radius: 0 0 var(--radius-md) var(--radius-md);
+		box-shadow: var(--shadow-md);
 	}
 
 	.socials {
@@ -285,13 +291,14 @@ const switchHref = `/${otherLang}${translatedSlug}`;
 		display: flex;
 		padding: var(--icon-padding);
 		text-decoration: none;
-		color: var(--accent-dark);
-		transition: color var(--theme-transition);
+		color: var(--gray-400);
+		transition: color var(--hover-transition), transform var(--hover-transition);
 	}
 
 	.social:hover,
 	.social:focus {
-		color: var(--accent-text-over);
+		color: var(--accent-regular);
+		transform: scale(1.1);
 	}
 
 	.theme-toggle {
@@ -325,39 +332,36 @@ const switchHref = `/${otherLang}${translatedSlug}`;
 			position: relative;
 			flex-direction: row;
 			font-size: var(--text-sm);
-			border-radius: 999rem;
-			border: 0;
+			border-radius: var(--radius-full);
+			border: 1px solid var(--gray-800);
 			padding: 0.5rem 0.5625rem;
-			background: radial-gradient(var(--gray-900), var(--gray-800) 150%);
-			box-shadow: var(--shadow-md);
+			background: var(--gray-999);
+			box-shadow: var(--shadow-sm);
 		}
 
 		.nav-items::before {
-			position: absolute;
-			inset: -1px;
-			content: '';
-			background: var(--gradient-stroke);
-			border-radius: 999rem;
-			z-index: -1;
+			display: none;
 		}
 
 		.link {
 			padding: 0.5rem 1rem;
-			border-radius: 999rem;
+			border-radius: var(--radius-full);
+			color: var(--gray-300);
 			transition:
-				color var(--theme-transition),
-				background-color var(--theme-transition);
+				color var(--hover-transition),
+				background-color var(--hover-transition);
 		}
 
 		.link:hover,
 		.link:focus {
-			color: var(--gray-100);
+			color: var(--gray-0);
 			background-color: var(--accent-subtle-overlay);
 		}
 
 		.link[aria-current='page'] {
 			color: var(--accent-text-over);
 			background-color: var(--accent-regular);
+			font-weight: 500;
 		}
 
 		.menu-footer {

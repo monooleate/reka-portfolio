@@ -115,8 +115,8 @@ const hobbies = [
 
 	img {
 		margin-top: 1.5rem;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
 	}
 
 	/* Intro Section */
@@ -131,7 +131,7 @@ const hobbies = [
 		padding: 2.5rem;
 		background: var(--gradient-subtle);
 		border: 1px solid var(--gray-800);
-		border-radius: 2rem;
+		border-radius: var(--radius-xl);
 	}
 
 	.intro-icon {
@@ -140,6 +140,7 @@ const hobbies = [
 
 	.intro-card h2 {
 		font-size: var(--text-2xl);
+		font-weight: 500;
 		color: var(--gray-0);
 		margin: 0 0 1rem;
 	}
@@ -167,6 +168,7 @@ const hobbies = [
 
 	.section-header-centered h2 {
 		font-size: var(--text-2xl);
+		font-weight: 500;
 		color: var(--gray-0);
 		margin: 0;
 	}
@@ -191,16 +193,16 @@ const hobbies = [
 	.hobby-card {
 		background: var(--gradient-subtle);
 		border: 1px solid var(--gray-800);
-		border-radius: 1.5rem;
+		border-radius: var(--radius-lg);
 		padding: 2rem;
 		text-align: center;
-		transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+		transition: transform var(--hover-transition), border-color var(--hover-transition), box-shadow var(--hover-transition);
 	}
 
 	.hobby-card:hover {
-		transform: translateY(-4px);
-		border-color: var(--accent-regular);
-		box-shadow: var(--shadow-md);
+		transform: translateY(-3px);
+		border-color: var(--accent-subtle-overlay);
+		box-shadow: var(--shadow-sm);
 	}
 
 	.hobby-icon {
@@ -209,6 +211,7 @@ const hobbies = [
 
 	.hobby-card h3 {
 		font-size: var(--text-lg);
+		font-weight: 500;
 		color: var(--gray-0);
 		margin: 0 0 0.75rem;
 	}
@@ -224,7 +227,7 @@ const hobbies = [
 	.travel-section {
 		background: var(--gradient-subtle);
 		border: 1px solid var(--gray-800);
-		border-radius: 2rem;
+		border-radius: var(--radius-xl);
 		padding: 2.5rem;
 	}
 
@@ -244,6 +247,7 @@ const hobbies = [
 
 	.travel-text h2 {
 		font-size: var(--text-xl);
+		font-weight: 500;
 		color: var(--gray-0);
 		margin: 0 0 1rem;
 	}
@@ -269,15 +273,15 @@ const hobbies = [
 		padding: 0.5rem 1rem;
 		background: var(--gray-999);
 		border: 1px solid var(--gray-800);
-		border-radius: 2rem;
+		border-radius: var(--radius-full);
 		font-size: var(--text-sm);
-		color: var(--gray-200);
-		transition: border-color 0.2s ease, transform 0.2s ease;
+		color: var(--gray-300);
+		transition: border-color var(--hover-transition), background var(--hover-transition);
 	}
 
 	.lang-badge:hover {
-		border-color: var(--accent-regular);
-		transform: scale(1.05);
+		border-color: var(--accent-subtle-overlay);
+		background: var(--accent-subtle-overlay);
 	}
 
 	/* Values Section */
@@ -290,13 +294,14 @@ const hobbies = [
 		max-width: 700px;
 		text-align: center;
 		padding: 2.5rem;
-		background: linear-gradient(135deg, var(--accent-overlay) 0%, transparent 100%);
-		border: 1px solid var(--accent-regular);
-		border-radius: 2rem;
+		background: linear-gradient(135deg, var(--accent-subtle-overlay) 0%, transparent 100%);
+		border: 1px solid var(--accent-subtle-overlay);
+		border-radius: var(--radius-xl);
 	}
 
 	.values-card h2 {
 		font-size: var(--text-xl);
+		font-weight: 500;
 		color: var(--gray-0);
 		margin: 1rem 0;
 	}

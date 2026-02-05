@@ -20,28 +20,20 @@ const { lang, href } = Astro.props;
 <style>
   .lang-toggle {
     appearance: none;
-    border: 1px solid var(--gray-600);
-    background: transparent;
+    border: 1px solid var(--gray-700);
+    background: var(--gray-800);
     padding: 0.35rem 0.9rem;
-    border-radius: 0.65rem;
+    border-radius: var(--radius-sm);
     font-size: var(--text-sm);
-    color: var(--gray-300);
+    font-weight: 500;
+    color: var(--gray-200);
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all var(--hover-transition);
   }
 
   .lang-toggle:hover {
     border-color: var(--accent-regular);
-    color: var(--accent-regular);
-  }
-
-  :root.theme-dark .lang-toggle {
-    border-color: var(--gray-500);
-    color: var(--gray-300);
-  }
-
-  :root.theme-dark .lang-toggle:hover {
-    border-color: var(--accent-regular);
-    color: var(--accent-regular);
+    background: var(--accent-subtle-overlay);
+    color: var(--gray-0);
   }
 </style>
