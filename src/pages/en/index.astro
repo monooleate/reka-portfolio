@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import CallToAction from '../../components/CallToAction.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
+import CvDownload from '../../components/CvDownload.astro';
 import Education from '../../components/Education.astro';
 import Experience from '../../components/Experience.astro';
 import Grid from '../../components/Grid.astro';
@@ -38,6 +39,9 @@ const projects = (await getCollection('work', ({ id }) => id.startsWith('en/')))
 						<Pill><Icon icon="clipboard-text" size="1.33em" /> {t(lang, "hero.role.analyst")}</Pill>
 						<Pill><Icon icon="lightning" size="1.33em" /> {t(lang, "hero.role.digital")}</Pill>
 						<Pill><Icon icon="kanban" size="1.33em" /> {t(lang, "hero.role.process")}</Pill>
+					</div>
+					<div class="hero-actions">
+						<CvDownload lang={lang} />
 					</div>
 				</Hero>
 
@@ -107,6 +111,12 @@ const projects = (await getCollection('work', ({ id }) => id.startsWith('en/')))
 		display: none;
 	}
 
+	.hero-actions {
+		display: flex;
+		justify-content: center;
+		margin-top: 0.5rem;
+	}
+
 	.hero picture {
 		display: contents;
 	}
@@ -135,6 +145,10 @@ const projects = (await getCollection('work', ({ id }) => id.startsWith('en/')))
 			margin-top: 0.5rem;
 			display: flex;
 			gap: 0.5rem;
+		}
+
+		.hero-actions {
+			justify-content: flex-start;
 		}
 
 		.hero img {

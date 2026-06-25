@@ -130,5 +130,15 @@
   "work.subtitle": "See my most recent projects below.",
   "work.viewAll": "View All",
 
+  "cv.download": "Download CV",
+  "cv.aria": "Download Réka Mészáros-Erdei's CV as a PDF",
+
+  "work.exp.title": "Professional Experience",
+  "work.exp.subtitle": "10+ years turning complex industrial and enterprise requirements into governed, deployable software — across oil & gas, healthcare and IT services.",
+  "work.highlights.title": "Career Highlights",
+  "work.timeline.title": "Career Path",
+  "work.skills.title": "Skills & Tools",
+  "work.tools.label": "Tools",
+
   "footer.copyright": "© {year} Réka Mészáros-Erdei. All rights reserved."
 }

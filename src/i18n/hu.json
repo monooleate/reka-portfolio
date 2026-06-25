@@ -130,5 +130,15 @@
   "work.subtitle": "Tekintsd meg legutóbbi projektjeimet.",
   "work.viewAll": "Összes megtekintése",
 
+  "cv.download": "Önéletrajz letöltése",
+  "cv.aria": "Mészáros-Erdei Réka önéletrajzának letöltése PDF-ben",
+
+  "work.exp.title": "Szakmai Tapasztalat",
+  "work.exp.subtitle": "Több mint 10 év: összetett ipari és vállalati követelmények átültetése irányított, használható szoftverré — az olaj- és gáziparban, az egészségügyben és az IT-szolgáltatásokban.",
+  "work.highlights.title": "Kiemelt Eredmények",
+  "work.timeline.title": "Pályaív",
+  "work.skills.title": "Készségek & Eszközök",
+  "work.tools.label": "Eszközök",
+
   "footer.copyright": "© {year} Mészáros-Erdei Réka. Minden jog fenntartva."
 }

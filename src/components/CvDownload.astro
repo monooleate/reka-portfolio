@@ -1,0 +1,78 @@
+---
+import Icon from './Icon.astro';
+import { t, type Lang } from '../lib/i18n';
+
+interface Props {
+	lang: Lang;
+	/** Visual style: solid gradient (default) or subtle outline. */
+	variant?: 'solid' | 'outline';
+}
+
+const { lang, variant = 'solid' } = Astro.props;
+const cvHref = '/Reka_Meszaros_Erdei_CV_EU.pdf';
+---
+
+<a
+	class:list={['cv-download', variant]}
+	href={cvHref}
+	download
+	aria-label={t(lang, 'cv.aria')}
+>
+	<Icon icon="download-simple" size="1.15em" />
+	<span>{t(lang, 'cv.download')}</span>
+</a>
+
+<style>
+	.cv-download {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.6em;
+		width: fit-content;
+		padding: 0.7em 1.6em;
+		border-radius: var(--radius-full);
+		font-family: var(--font-brand);
+		font-weight: 500;
+		font-size: var(--text-md);
+		line-height: 1.1;
+		letter-spacing: 0.01em;
+		text-decoration: none;
+		white-space: nowrap;
+		transition:
+			transform var(--hover-transition),
+			box-shadow var(--hover-transition),
+			background-color var(--hover-transition),
+			border-color var(--hover-transition);
+	}
+
+	.cv-download.solid {
+		color: var(--accent-text-over);
+		background: var(--gradient-accent-orange);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.cv-download.outline {
+		color: var(--accent-regular);
+		background: var(--gray-999);
+		border: 1px solid var(--accent-regular);
+		box-shadow: var(--shadow-sm);
+	}
+
+	.cv-download:hover {
+		transform: translateY(-2px);
+		box-shadow: var(--shadow-md);
+	}
+
+	.cv-download.outline:hover {
+		background: var(--accent-subtle-overlay);
+	}
+
+	.cv-download:active {
+		transform: translateY(0);
+	}
+
+	.cv-download:focus-visible {
+		outline: 2px solid var(--accent-regular);
+		outline-offset: 3px;
+	}
+</style>
