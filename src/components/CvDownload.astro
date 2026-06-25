@@ -6,20 +6,22 @@ interface Props {
 	lang: Lang;
 	/** Visual style: solid gradient (default) or subtle outline. */
 	variant?: 'solid' | 'outline';
+	/** Compact = icon-only on mobile, icon + label on desktop (for the header). */
+	compact?: boolean;
 }
 
-const { lang, variant = 'solid' } = Astro.props;
+const { lang, variant = 'solid', compact = false } = Astro.props;
 const cvHref = '/Reka_Meszaros_Erdei_CV_EU.pdf';
 ---
 
 <a
-	class:list={['cv-download', variant]}
+	class:list={['cv-download', variant, { compact }]}
 	href={cvHref}
 	download
 	aria-label={t(lang, 'cv.aria')}
 >
 	<Icon icon="download-simple" size="1.15em" />
-	<span>{t(lang, 'cv.download')}</span>
+	<span class="label">{t(lang, 'cv.download')}</span>
 </a>
 
 <style>
@@ -32,7 +34,7 @@ const cvHref = '/Reka_Meszaros_Erdei_CV_EU.pdf';
 		padding: 0.7em 1.6em;
 		border-radius: var(--radius-full);
 		font-family: var(--font-brand);
-		font-weight: 500;
+		font-weight: 600;
 		font-size: var(--text-md);
 		line-height: 1.1;
 		letter-spacing: 0.01em;
@@ -48,7 +50,8 @@ const cvHref = '/Reka_Meszaros_Erdei_CV_EU.pdf';
 	.cv-download.solid {
 		color: var(--accent-text-over);
 		background: var(--gradient-accent-orange);
-		box-shadow: var(--shadow-sm);
+		/* Accent glow so the button stands out against the header/hero. */
+		box-shadow: 0 4px 16px -2px hsla(280, 65%, 50%, 0.5), var(--shadow-sm);
 	}
 
 	.cv-download.outline {
@@ -60,11 +63,15 @@ const cvHref = '/Reka_Meszaros_Erdei_CV_EU.pdf';
 
 	.cv-download:hover {
 		transform: translateY(-2px);
-		box-shadow: var(--shadow-md);
+	}
+
+	.cv-download.solid:hover {
+		box-shadow: 0 7px 22px -2px hsla(280, 65%, 50%, 0.65), var(--shadow-md);
 	}
 
 	.cv-download.outline:hover {
 		background: var(--accent-subtle-overlay);
+		box-shadow: var(--shadow-md);
 	}
 
 	.cv-download:active {
@@ -74,5 +81,25 @@ const cvHref = '/Reka_Meszaros_Erdei_CV_EU.pdf';
 	.cv-download:focus-visible {
 		outline: 2px solid var(--accent-regular);
 		outline-offset: 3px;
+	}
+
+	/* Compact: icon-only on small screens, full label from 50em up. */
+	.cv-download.compact {
+		padding: 0.5em 0.8em;
+		font-size: var(--text-base);
+	}
+
+	.cv-download.compact .label {
+		display: none;
+	}
+
+	@media (min-width: 50em) {
+		.cv-download.compact {
+			padding: 0.6em 1.3em;
+		}
+
+		.cv-download.compact .label {
+			display: inline;
+		}
 	}
 </style>

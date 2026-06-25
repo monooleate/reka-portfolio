@@ -1,146 +1,88 @@
 ---
-import ContactCTA from '../../components/ContactCTA.astro';
-import Education from '../../components/Education.astro';
-import Hero from '../../components/Hero.astro';
-import Icon from '../../components/Icon.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { t } from "../../lib/i18n";
+import Icon from './Icon.astro';
+import { t, type Lang } from '../lib/i18n';
 
-const lang = "en";
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
 
 const hobbies = [
-  { key: 'winter', icon: 'snowflake' as const },
-  { key: 'climb', icon: 'mountains' as const },
-  { key: 'board', icon: 'skateboard' as const },
-  { key: 'fitness', icon: 'barbell' as const },
+	{ key: 'winter', icon: 'snowflake' as const },
+	{ key: 'climb', icon: 'mountains' as const },
+	{ key: 'board', icon: 'skateboard' as const },
+	{ key: 'fitness', icon: 'barbell' as const },
 ];
 ---
 
-<BaseLayout
-	title={`${t(lang, "about.title")} | ${t(lang, "site.title")}`}
-	description={t(lang, "site.description")}
-	lang={lang}
-	heroImage="/assets/portrait"
->
-	<div class="stack gap-20">
-		<main class="wrapper about">
-			<Hero
-				title={t(lang, "about.title")}
-				tagline={t(lang, "about.tagline")}
-			>
-				<picture style="display:contents">
-					<source media="(min-width: 50em)" type="image/webp" srcset="/assets/portrait-600.webp" />
-					<source type="image/webp" srcset="/assets/portrait-400.webp" />
-					<img
-						width="600"
-						height="600"
-						class="portrait-frame"
-						src="/assets/portrait.jpg"
-						alt="Professional portrait of Réka Mészáros-Erdei, Business Analyst"
-						fetchpriority="high"
-						loading="eager"
-						decoding="async"
-					/>
-				</picture>
-			</Hero>
+<div class="about-me stack">
+	<!-- Intro -->
+	<section class="intro-section">
+		<div class="intro-card">
+			<div class="intro-icon">
+				<Icon icon="sparkle" color="var(--accent-regular)" size="2rem" gradient />
+			</div>
+			<h2>{t(lang, 'about.intro.title')}</h2>
+			<p>{t(lang, 'about.intro.text')}</p>
+		</div>
+	</section>
 
-			<!-- Intro Section -->
-			<section class="intro-section">
-				<div class="intro-card">
-					<div class="intro-icon">
-						<Icon icon="sparkle" color="var(--accent-regular)" size="2rem" gradient />
+	<!-- Personal + hobbies -->
+	<section class="personal-section">
+		<div class="section-header-centered">
+			<Icon icon="heart" color="var(--accent-regular)" size="1.5rem" gradient />
+			<h2>{t(lang, 'about.personal.title')}</h2>
+		</div>
+		<p class="personal-intro">{t(lang, 'about.personal.intro')}</p>
+
+		<div class="hobbies-grid">
+			{hobbies.map((hobby) => (
+				<div class="hobby-card">
+					<div class="hobby-icon">
+						<Icon icon={hobby.icon} color="var(--accent-regular)" size="2rem" gradient />
 					</div>
-					<h2>{t(lang, "about.intro.title")}</h2>
-					<p>{t(lang, "about.intro.text")}</p>
+					<h3>{t(lang, `about.hobbies.${hobby.key}`)}</h3>
+					<p>{t(lang, `about.hobbies.${hobby.key}.desc`)}</p>
 				</div>
-			</section>
+			))}
+		</div>
+	</section>
 
-			<!-- Personal Section -->
-			<section class="personal-section">
-				<div class="section-header-centered">
-					<Icon icon="heart" color="var(--accent-regular)" size="1.5rem" gradient />
-					<h2>{t(lang, "about.personal.title")}</h2>
+	<!-- Travel & languages -->
+	<section class="travel-section">
+		<div class="travel-content">
+			<div class="travel-icon">
+				<Icon icon="airplane-tilt" color="var(--accent-regular)" size="2.5rem" gradient />
+			</div>
+			<div class="travel-text">
+				<h2>{t(lang, 'about.travel.title')}</h2>
+				<p>{t(lang, 'about.travel.text')}</p>
+				<div class="language-badges">
+					<span class="lang-badge">🇭🇺 Magyar</span>
+					<span class="lang-badge">🇬🇧 English</span>
+					<span class="lang-badge">🇩🇪 Deutsch</span>
 				</div>
-				<p class="personal-intro">{t(lang, "about.personal.intro")}</p>
+			</div>
+		</div>
+	</section>
 
-				<!-- Hobbies Grid -->
-				<div class="hobbies-grid">
-					{hobbies.map((hobby) => (
-						<div class="hobby-card">
-							<div class="hobby-icon">
-								<Icon icon={hobby.icon} color="var(--accent-regular)" size="2rem" gradient />
-							</div>
-							<h3>{t(lang, `about.hobbies.${hobby.key}`)}</h3>
-							<p>{t(lang, `about.hobbies.${hobby.key}.desc`)}</p>
-						</div>
-					))}
-				</div>
-			</section>
-
-			<!-- Travel Section -->
-			<section class="travel-section">
-				<div class="travel-content">
-					<div class="travel-icon">
-						<Icon icon="airplane-tilt" color="var(--accent-regular)" size="2.5rem" gradient />
-					</div>
-					<div class="travel-text">
-						<h2>{t(lang, "about.travel.title")}</h2>
-						<p>{t(lang, "about.travel.text")}</p>
-						<div class="language-badges">
-							<span class="lang-badge">🇭🇺 Magyar</span>
-							<span class="lang-badge">🇬🇧 English</span>
-							<span class="lang-badge">🇩🇪 Deutsch</span>
-							<span class="lang-badge">🇪🇸 Español</span>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Values Section -->
-			<section class="values-section">
-				<div class="values-card">
-					<Icon icon="compass" color="var(--accent-regular)" size="2rem" gradient />
-					<h2>{t(lang, "about.values.title")}</h2>
-					<p>{t(lang, "about.values.text")}</p>
-				</div>
-			</section>
-
-			<!-- Education -->
-			<section class="education-wrapper">
-				<Education lang={lang} />
-			</section>
-		</main>
-
-		<ContactCTA lang={lang} />
-	</div>
-</BaseLayout>
+	<!-- Values -->
+	<section class="values-section">
+		<div class="values-card">
+			<Icon icon="compass" color="var(--accent-regular)" size="2rem" gradient />
+			<h2>{t(lang, 'about.values.title')}</h2>
+			<p>{t(lang, 'about.values.text')}</p>
+		</div>
+	</section>
+</div>
 
 <style>
-	.about {
-		display: flex;
-		flex-direction: column;
+	.about-me {
 		gap: 4rem;
 	}
 
-	.portrait-frame {
-		display: block;
-		margin: 1.5rem auto 0;
-		width: 100%;
-		max-width: 300px;
-		aspect-ratio: 1 / 1;
-		object-fit: cover;
-		border-radius: var(--radius-lg);
-		box-shadow: var(--shadow-sm);
-	}
-
-	@media (min-width: 50em) {
-		.portrait-frame {
-			max-width: 420px;
-			border-radius: var(--radius-xl);
-		}
-	}
-
-	/* Intro Section */
+	/* Intro */
 	.intro-section {
 		display: flex;
 		justify-content: center;
@@ -173,7 +115,7 @@ const hobbies = [
 		margin: 0;
 	}
 
-	/* Personal Section */
+	/* Personal */
 	.personal-section {
 		display: flex;
 		flex-direction: column;
@@ -203,7 +145,6 @@ const hobbies = [
 		line-height: 1.7;
 	}
 
-	/* Hobbies Grid */
 	.hobbies-grid {
 		display: grid;
 		grid-template-columns: 1fr;
@@ -239,12 +180,12 @@ const hobbies = [
 
 	.hobby-card p {
 		font-size: var(--text-sm);
-		color: var(--gray-400);
+		color: var(--gray-300);
 		margin: 0;
 		line-height: 1.6;
 	}
 
-	/* Travel Section */
+	/* Travel */
 	.travel-section {
 		background: var(--gradient-subtle);
 		border: 1px solid var(--gray-800);
@@ -305,7 +246,7 @@ const hobbies = [
 		background: var(--accent-subtle-overlay);
 	}
 
-	/* Values Section */
+	/* Values */
 	.values-section {
 		display: flex;
 		justify-content: center;
@@ -334,13 +275,8 @@ const hobbies = [
 		margin: 0;
 	}
 
-	/* Education Wrapper */
-	.education-wrapper {
-		margin-top: 1rem;
-	}
-
 	@media (min-width: 50em) {
-		.about {
+		.about-me {
 			gap: 5rem;
 		}
 
@@ -348,10 +284,7 @@ const hobbies = [
 			padding: 3rem 4rem;
 		}
 
-		.intro-card h2 {
-			font-size: var(--text-3xl);
-		}
-
+		.intro-card h2,
 		.section-header-centered h2 {
 			font-size: var(--text-3xl);
 		}

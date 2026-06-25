@@ -13,7 +13,7 @@ const educations = [
   { key: 'bsc', icon: 'certificate' as const },
 ];
 
-const languages = ['hu', 'en', 'de', 'es'];
+const languages = ['hu', 'en', 'de'];
 ---
 
 <section class="education-section">
@@ -49,7 +49,7 @@ const languages = ['hu', 'en', 'de', 'es'];
       <div class="languages-list">
         {languages.map((langKey) => (
           <div class="language-item">
-            <span class="language-flag">{langKey === 'hu' ? '🇭🇺' : langKey === 'en' ? '🇬🇧' : langKey === 'de' ? '🇩🇪' : '🇪🇸'}</span>
+            <span class="language-flag">{langKey === 'hu' ? '🇭🇺' : langKey === 'en' ? '🇬🇧' : '🇩🇪'}</span>
             <span class="language-text">{t(lang, `languages.${langKey}`)}</span>
           </div>
         ))}

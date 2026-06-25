@@ -1,15 +1,15 @@
 {
-  "site.title": "Mészáros-Erdei Réka | Üzleti Elemző",
-  "site.description": "Üzleti elemző, digitális transzformáció, IT stratégia és folyamatoptimalizálás szakértő az energia, egészségügy és IT szolgáltatások területén.",
-  "site.role": "Üzleti Elemző",
+  "site.title": "Mészáros-Erdei Réka | IT Üzleti Tanácsadó",
+  "site.description": "IT üzleti tanácsadó és digitális transzformációs szakértő — IT stratégia, folyamatoptimalizálás és termék-tulajdonlás az energia, egészségügy és IT szolgáltatások területén.",
+  "site.role": "IT Üzleti Tanácsadó",
 
   "hero.name": "Mészáros-Erdei Réka",
   "hero.tagline": "Üzleti elemzés × Digitális transzformáció",
-  "hero.role.analyst": "Üzleti Elemző",
-  "hero.role.digital": "Digitális Stratéga",
+  "hero.role.analyst": "IT Üzleti Tanácsadó",
+  "hero.role.digital": "Digitális Transzformáció",
   "hero.role.process": "Folyamat Szakértő",
   "heroTitle": "Szia, Réka vagyok",
-  "heroSubtitle": "Üzleti elemzőként hidat képezek a stratégia és a technológia között a digitális transzformáció érdekében.",
+  "heroSubtitle": "IT üzleti tanácsadó és digitális transzformációs szakértő — hidat képezek az üzlet és a technológia között a digitális transzformáció érdekében.",
   "cta": "KAPCSOLATFELVÉTEL",
 
   "profile.title": "Profil",
@@ -85,10 +85,9 @@
   "education.bsc.period": "2005 - 2009",
 
   "languages.title": "Nyelvek",
-  "languages.en": "Angol - Középhaladó (Üzleti)",
-  "languages.de": "Német - Középhaladó (Passzív)",
-  "languages.es": "Spanyol - Alapfok (Passzív)",
-  "languages.hu": "Magyar - Anyanyelv",
+  "languages.en": "Angol — Felsőfok (C1)",
+  "languages.de": "Német — Középfok (B2)",
+  "languages.hu": "Magyar — Anyanyelv (C2)",
 
   "contact.title": "Dolgozzunk Együtt",
   "contact.subtitle": "Érdekel az együttműködés? Szívesen hallok a projektedről.",
@@ -121,7 +120,7 @@
   "about.hobbies.fitness.desc": "A rendszeres edzések és biciklitúrák energiával töltenek fel és készen tartanak az új kihívásokra.",
 
   "about.travel.title": "A Világ Felfedezése",
-  "about.travel.text": "Szenvedélyesen utazom és fedezem fel az új kultúrákat. A nyelvtanulás ajtókat nyit a mélyebb kapcsolatokhoz — ezért beszélek magyarul, angolul, németül és egy kicsit spanyolul. Minden utazás valami újat tanít az alkalmazkodásról és a perspektíváról.",
+  "about.travel.text": "Szenvedélyesen utazom és fedezem fel az új kultúrákat. A nyelvtanulás ajtókat nyit a mélyebb kapcsolatokhoz — ezért beszélek magyarul, angolul és németül. Minden utazás valami újat tanít az alkalmazkodásról és a perspektíváról.",
 
   "about.values.title": "Mi Hajt Előre",
   "about.values.text": "Ugyanazt az elkötelezettséget, amit egy mászóútvonal meghódítására vagy egy kihívást jelentő sílejtő legyőzésére fordítok, viszem magammal minden projektbe. Hiszek a kitartásban, a csapatmunkában és a kreatív megoldások keresésében — akár a hegyen vagyok, akár egy tárgyalóteremben.",

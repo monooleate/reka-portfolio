@@ -1,22 +1,16 @@
 # Réka Mészáros-Erdei
 
-> Réka Mészáros-Erdei is a Business Analyst based in Diósd, Hungary, with expertise in digital transformation, IT strategy, and business process optimization across the energy, healthcare, and IT-services sectors. She bridges business needs and technical delivery — from requirement gathering and stakeholder management to agile project coordination.
+> Réka Mészáros-Erdei is an IT Business Consultant and Digital Transformation Specialist based in Diósd, Hungary, with expertise in IT strategy, business process optimization, and product ownership across the energy, healthcare, and IT-services sectors. She bridges business needs and technical delivery — from requirement gathering and stakeholder management to agile project coordination.
 
-Réka holds an MSc and BSc in Chemical and Process Engineering from the Budapest University of Technology and Economics (BME), and currently works as a Business Analyst at CommIT Smart. She speaks Hungarian, English, German, and Spanish.
+Réka holds an MSc and BSc in Chemical and Process Engineering from the Budapest University of Technology and Economics (BME). With 10+ years of combined engineering and enterprise-IT experience, she has owned a multi-country IT portfolio at MOL Group, delivered HR and healthcare digitalisation programmes, and introduced predictive-maintenance and machine-learning analytics into refinery operations. She speaks Hungarian, English, and German.
 
-Core areas of expertise: Business Analysis, Digital Transformation, IT Strategy, Agile Methodology, Process Optimization, Requirement Gathering, and Stakeholder Management. Tools and technologies include Microsoft 365, Jira, Confluence, OSIsoft PI, Python, SQL, WordPress, and Figma.
+Core areas of expertise: Business Analysis, Digital Transformation, IT Strategy, Agile Methodology, Process Optimization, Requirement Gathering, and Stakeholder Management. Tools and technologies include Microsoft 365, Jira, Confluence, OSIsoft PI, Python, SQL, WordPress, Figma, GitHub, and Postman.
 
-The website is bilingual (English and Hungarian).
+The website is a single-page portfolio, available in English and Hungarian.
 
-## Pages (English)
-- [Home](https://rekaerdei.com/en/): Introduction, core competencies, professional experience, and education.
-- [About](https://rekaerdei.com/en/about/): Background, personal interests, values, and approach to work.
-- [Work](https://rekaerdei.com/en/work/): Selected projects and case studies.
-
-## Pages (Hungarian)
-- [Főoldal](https://rekaerdei.com/hu/): Bemutatkozás, kompetenciák, szakmai tapasztalat és tanulmányok.
-- [Rólam](https://rekaerdei.com/hu/rolam/): Háttér, érdeklődési körök, értékek és munkamódszer.
-- [Munkáim](https://rekaerdei.com/hu/munkaim/): Kiemelt projektek és esettanulmányok.
+## Pages
+- [Home (English)](https://rekaerdei.com/en/): Full portfolio — introduction, core competencies, professional experience, education, and personal background.
+- [Főoldal (Hungarian)](https://rekaerdei.com/hu/): Teljes portfólió — bemutatkozás, kompetenciák, szakmai tapasztalat, tanulmányok és személyes háttér.
 
 ## Contact
 - Email: erdeireka87@gmail.com
