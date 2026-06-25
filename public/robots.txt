@@ -27,4 +27,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://rekameszaroserdei.com/sitemap-index.xml
+Sitemap: https://rekaerdei.com/sitemap-index.xml

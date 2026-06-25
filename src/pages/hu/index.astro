@@ -111,6 +111,10 @@ const projects = (await getCollection('work', ({ id }) => id.startsWith('hu/')))
 		display: contents;
 	}
 
+	.hero source {
+		display: none;
+	}
+
 	.hero img {
 		aspect-ratio: 5 / 4;
 		object-fit: cover;

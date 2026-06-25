@@ -9,14 +9,14 @@ Core areas of expertise: Business Analysis, Digital Transformation, IT Strategy,
 The website is bilingual (English and Hungarian).
 
 ## Pages (English)
-- [Home](https://rekameszaroserdei.com/en/): Introduction, core competencies, professional experience, and education.
-- [About](https://rekameszaroserdei.com/en/about/): Background, personal interests, values, and approach to work.
-- [Work](https://rekameszaroserdei.com/en/work/): Selected projects and case studies.
+- [Home](https://rekaerdei.com/en/): Introduction, core competencies, professional experience, and education.
+- [About](https://rekaerdei.com/en/about/): Background, personal interests, values, and approach to work.
+- [Work](https://rekaerdei.com/en/work/): Selected projects and case studies.
 
 ## Pages (Hungarian)
-- [Főoldal](https://rekameszaroserdei.com/hu/): Bemutatkozás, kompetenciák, szakmai tapasztalat és tanulmányok.
-- [Rólam](https://rekameszaroserdei.com/hu/rolam/): Háttér, érdeklődési körök, értékek és munkamódszer.
-- [Munkáim](https://rekameszaroserdei.com/hu/munkaim/): Kiemelt projektek és esettanulmányok.
+- [Főoldal](https://rekaerdei.com/hu/): Bemutatkozás, kompetenciák, szakmai tapasztalat és tanulmányok.
+- [Rólam](https://rekaerdei.com/hu/rolam/): Háttér, érdeklődési körök, értékek és munkamódszer.
+- [Munkáim](https://rekaerdei.com/hu/munkaim/): Kiemelt projektek és esettanulmányok.
 
 ## Contact
 - Email: erdeireka87@gmail.com
