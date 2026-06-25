@@ -24,6 +24,7 @@ const projects = (await getCollection('work', ({ id }) => id.startsWith('hu/')))
 	title={t(lang, "site.title")}
 	description={t(lang, "site.description")}
 	lang={lang}
+	heroImage="/assets/portrait"
 >
 	<div class="stack gap-20 lg:gap-48">
 		<div class="wrapper stack gap-8 lg:gap-20">
@@ -40,12 +41,19 @@ const projects = (await getCollection('work', ({ id }) => id.startsWith('hu/')))
 					</div>
 				</Hero>
 
-				<img
-					alt="Mészáros-Erdei Réka - Üzleti Elemző"
-					width="480"
-					height="620"
-					src="/assets/portrait.jpg"
-				/>
+				<picture>
+					<source media="(min-width: 50em)" type="image/webp" srcset="/assets/portrait-600.webp" />
+					<source type="image/webp" srcset="/assets/portrait-400.webp" />
+					<img
+						alt="Mészáros-Erdei Réka - Üzleti Elemző"
+						width="480"
+						height="620"
+						src="/assets/portrait.jpg"
+						fetchpriority="high"
+						loading="eager"
+						decoding="async"
+					/>
+				</picture>
 			</header>
 
 			<Skills lang={lang} />
@@ -97,6 +105,10 @@ const projects = (await getCollection('work', ({ id }) => id.startsWith('hu/')))
 
 	.roles {
 		display: none;
+	}
+
+	.hero picture {
+		display: contents;
 	}
 
 	.hero img {

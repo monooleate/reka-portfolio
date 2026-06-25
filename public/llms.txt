@@ -1,0 +1,23 @@
+# Réka Mészáros-Erdei
+
+> Réka Mészáros-Erdei is a Business Analyst based in Diósd, Hungary, with expertise in digital transformation, IT strategy, and business process optimization across the energy, healthcare, and IT-services sectors. She bridges business needs and technical delivery — from requirement gathering and stakeholder management to agile project coordination.
+
+Réka holds an MSc and BSc in Chemical and Process Engineering from the Budapest University of Technology and Economics (BME), and currently works as a Business Analyst at CommIT Smart. She speaks Hungarian, English, German, and Spanish.
+
+Core areas of expertise: Business Analysis, Digital Transformation, IT Strategy, Agile Methodology, Process Optimization, Requirement Gathering, and Stakeholder Management. Tools and technologies include Microsoft 365, Jira, Confluence, OSIsoft PI, Python, SQL, WordPress, and Figma.
+
+The website is bilingual (English and Hungarian).
+
+## Pages (English)
+- [Home](https://rekameszaroserdei.com/en/): Introduction, core competencies, professional experience, and education.
+- [About](https://rekameszaroserdei.com/en/about/): Background, personal interests, values, and approach to work.
+- [Work](https://rekameszaroserdei.com/en/work/): Selected projects and case studies.
+
+## Pages (Hungarian)
+- [Főoldal](https://rekameszaroserdei.com/hu/): Bemutatkozás, kompetenciák, szakmai tapasztalat és tanulmányok.
+- [Rólam](https://rekameszaroserdei.com/hu/rolam/): Háttér, érdeklődési körök, értékek és munkamódszer.
+- [Munkáim](https://rekameszaroserdei.com/hu/munkaim/): Kiemelt projektek és esettanulmányok.
+
+## Contact
+- Email: erdeireka87@gmail.com
+- LinkedIn: https://www.linkedin.com/in/reka-meszaros-erdei-696769a6/

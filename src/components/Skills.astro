@@ -33,7 +33,8 @@ const softSkills = [
 ];
 ---
 
-<section class="skills-section">
+<section class="skills-section" aria-labelledby="skills-heading">
+  <h2 id="skills-heading" class="sr-only">{t(lang, "skills.title")}</h2>
   <div class="skills-grid">
     {coreSkills.map((skill) => (
       <div class="skill-card">
@@ -114,7 +115,7 @@ const softSkills = [
 
   .skill-card p {
     font-size: var(--text-sm);
-    color: var(--gray-400);
+    color: var(--gray-300);
     margin: 0;
     line-height: 1.7;
   }

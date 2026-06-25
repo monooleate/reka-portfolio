@@ -20,6 +20,7 @@ const hobbies = [
 	title={`${t(lang, "about.title")} | ${t(lang, "site.title")}`}
 	description={t(lang, "site.description")}
 	lang={lang}
+	heroImage="/assets/portrait"
 >
 	<div class="stack gap-20">
 		<main class="wrapper about">
@@ -27,12 +28,20 @@ const hobbies = [
 				title={t(lang, "about.title")}
 				tagline={t(lang, "about.tagline")}
 			>
-				<img
-					width="600"
-					style="display:block; margin:0 auto;"
-					src="/assets/portrait.jpg"
-					alt="Professional picture about Réka Mészáros-Erdei"
-				/>
+				<picture style="display:contents">
+					<source media="(min-width: 50em)" type="image/webp" srcset="/assets/portrait-600.webp" />
+					<source type="image/webp" srcset="/assets/portrait-400.webp" />
+					<img
+						width="600"
+						height="600"
+						class="portrait-frame"
+						src="/assets/portrait.jpg"
+						alt="Professional portrait of Réka Mészáros-Erdei, Business Analyst"
+						fetchpriority="high"
+						loading="eager"
+						decoding="async"
+					/>
+				</picture>
 			</Hero>
 
 			<!-- Intro Section -->
@@ -113,10 +122,22 @@ const hobbies = [
 		gap: 4rem;
 	}
 
-	img {
-		margin-top: 1.5rem;
+	.portrait-frame {
+		display: block;
+		margin: 1.5rem auto 0;
+		width: 100%;
+		max-width: 300px;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
 		border-radius: var(--radius-lg);
 		box-shadow: var(--shadow-sm);
+	}
+
+	@media (min-width: 50em) {
+		.portrait-frame {
+			max-width: 420px;
+			border-radius: var(--radius-xl);
+		}
 	}
 
 	/* Intro Section */

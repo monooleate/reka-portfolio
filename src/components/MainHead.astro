@@ -1,4 +1,6 @@
 ---
+// Self-hosted fonts (no render-blocking third-party requests).
+import '../styles/fonts.css';
 import '../styles/global.css';
 
 interface Props {
@@ -6,6 +8,8 @@ interface Props {
 	description?: string | undefined;
 	lang?: string;
 	canonicalUrl?: string;
+	/** Absolute or root-relative path of the LCP image to preload (homepage hero). */
+	heroImage?: string;
 }
 
 const {
@@ -13,6 +17,7 @@ const {
 	description = "Business Analyst with expertise in digital transformation, IT strategy, and process optimization.",
 	lang = "en",
 	canonicalUrl,
+	heroImage,
 } = Astro.props;
 
 const siteUrl = Astro.site?.href || "https://rekameszaroserdei.com";
@@ -25,6 +30,7 @@ const personSchema = {
 	"alternateName": "Mészáros-Erdei Réka",
 	"jobTitle": "Business Analyst",
 	"url": siteUrl,
+	"sameAs": ["https://www.linkedin.com/in/reka-meszaros-erdei-696769a6/"],
 	"email": "erdeireka87@gmail.com",
 	"address": {
 		"@type": "PostalAddress",
@@ -92,11 +98,16 @@ const websiteSchema = {
 <meta property="og:locale" content={lang === "hu" ? "hu_HU" : "en_US"} />
 <meta property="og:locale:alternate" content={lang === "hu" ? "en_US" : "hu_HU"} />
 <meta property="og:site_name" content="Réka Mészáros-Erdei" />
+<meta property="og:image" content={new URL("og-image.jpg", siteUrl).href} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Réka Mészáros-Erdei — Business Analyst" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL("og-image.jpg", siteUrl).href} />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={pageUrl} />
@@ -108,13 +119,24 @@ const websiteSchema = {
 
 <title>{title}</title>
 
+<!-- Favicons -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-	href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,700;1,400&family=Rubik:wght@500;600&display=swap"
-	rel="stylesheet"
-/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Preload critical fonts so hero text paints with the brand font near FCP (better LCP) -->
+<link rel="preload" as="font" type="font/woff2" href="/fonts/public-sans-latin-400-normal.woff2" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="/fonts/rubik-latin-500-normal.woff2" crossorigin />
+{lang === "hu" && <link rel="preload" as="font" type="font/woff2" href="/fonts/public-sans-latin-ext-400-normal.woff2" crossorigin />}
+
+<!-- Preload the hero (LCP) image on pages that have one (responsive: small on mobile, larger on desktop) -->
+{heroImage && (
+	<>
+		<link rel="preload" as="image" type="image/webp" href={`${heroImage}-400.webp`} media="(max-width: 49.999em)" fetchpriority="high" />
+		<link rel="preload" as="image" type="image/webp" href={`${heroImage}-600.webp`} media="(min-width: 50em)" fetchpriority="high" />
+	</>
+)}
 
 <!-- JSON-LD Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
