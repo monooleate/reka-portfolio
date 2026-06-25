@@ -4,7 +4,7 @@ import CallToAction from '../../components/CallToAction.astro';
 import ContactCTA from '../../components/ContactCTA.astro';
 import CvDownload from '../../components/CvDownload.astro';
 import Education from '../../components/Education.astro';
-import Experience from '../../components/Experience.astro';
+import CareerPath from '../../components/CareerPath.astro';
 import Grid from '../../components/Grid.astro';
 import Hero from '../../components/Hero.astro';
 import Icon from '../../components/Icon.astro';
@@ -64,7 +64,7 @@ const projects = (await getCollection('work', ({ id }) => id.startsWith('hu/')))
 		</div>
 
 		<main class="wrapper stack gap-20 lg:gap-48">
-			<Experience lang={lang} />
+			<CareerPath lang={lang} />
 
 			<Education lang={lang} />
 

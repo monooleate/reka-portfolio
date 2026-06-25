@@ -1,0 +1,250 @@
+---
+import Icon from './Icon.astro';
+import { t, type Lang } from '../lib/i18n';
+import { roles } from '../data/career';
+
+interface Props {
+	lang: Lang;
+}
+
+const { lang } = Astro.props;
+const items = roles[lang];
+---
+
+<section class="career-section" aria-labelledby="career-heading">
+	<div class="section-head">
+		<Icon icon="briefcase" color="var(--accent-regular)" size="2rem" gradient />
+		<h2 id="career-heading">{t(lang, 'experience.title')}</h2>
+	</div>
+
+	<div class="timeline">
+		{items.map((role, i) => (
+			<article class={`timeline-item ${role.current ? 'current' : ''}`}>
+				<div class="timeline-marker">
+					<div class="marker-dot"></div>
+					{i < items.length - 1 && <div class="marker-line"></div>}
+				</div>
+
+				<div class="job-card">
+					<div class="role-header">
+						<div>
+							<h3 class="role">{role.role}</h3>
+							<p class="company">
+								<span class="company-name">{role.company}</span>
+								<span class="dot-sep">·</span>
+								<span class="location">{role.location}</span>
+							</p>
+							{role.note && <p class="note">{role.note}</p>}
+						</div>
+						<span class="period">{role.period}</span>
+					</div>
+
+					<ul class="bullets">
+						{role.bullets.map((b) => <li>{b}</li>)}
+					</ul>
+
+					<ul class="tags">
+						{role.tags.map((tag) => <li class="tag">{tag}</li>)}
+					</ul>
+				</div>
+			</article>
+		))}
+	</div>
+</section>
+
+<style>
+	.section-head {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 2.5rem;
+	}
+
+	.section-head h2 {
+		font-size: var(--text-2xl);
+		font-weight: 500;
+		color: var(--gray-0);
+		margin: 0;
+	}
+
+	.timeline {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.timeline-item {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: 1.25rem;
+	}
+
+	.timeline-marker {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding-top: 1.5rem;
+	}
+
+	.marker-dot {
+		width: 1rem;
+		height: 1rem;
+		border-radius: 50%;
+		background: var(--gray-600);
+		border: 3px solid var(--gray-999);
+		box-shadow: 0 0 0 1px var(--gray-700);
+		flex-shrink: 0;
+	}
+
+	.timeline-item.current .marker-dot {
+		background: var(--gradient-accent);
+		box-shadow: 0 0 0 4px var(--accent-overlay);
+	}
+
+	.marker-line {
+		width: 2px;
+		flex: 1;
+		background: linear-gradient(var(--gray-700), var(--gray-800));
+		margin: 0.5rem 0;
+		min-height: 1.5rem;
+	}
+
+	/* Each experience sits in its own framed card */
+	.job-card {
+		margin-bottom: 1.5rem;
+		padding: 1.5rem;
+		min-width: 0;
+		background: var(--gradient-subtle);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+		transition: transform var(--hover-transition), border-color var(--hover-transition), box-shadow var(--hover-transition);
+	}
+
+	.job-card:hover {
+		transform: translateY(-3px);
+		border-color: var(--accent-overlay);
+		box-shadow: var(--shadow-md);
+	}
+
+	.role-header {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 0.25rem 1rem;
+		margin-bottom: 0.85rem;
+	}
+
+	.role {
+		font-size: var(--text-lg);
+		font-weight: 500;
+		color: var(--gray-0);
+		margin: 0;
+		line-height: 1.25;
+	}
+
+	.company {
+		margin: 0.2rem 0 0;
+		font-size: var(--text-sm);
+		color: var(--gray-300);
+	}
+
+	.company-name {
+		color: var(--accent-regular);
+		font-weight: 500;
+	}
+
+	:root.theme-dark .company-name {
+		color: var(--accent-dark);
+	}
+
+	.dot-sep {
+		margin: 0 0.4rem;
+		color: var(--gray-500);
+	}
+
+	.note {
+		margin: 0.15rem 0 0;
+		font-size: var(--text-sm);
+		color: var(--gray-400);
+		font-style: italic;
+	}
+
+	.period {
+		flex-shrink: 0;
+		font-size: var(--text-sm);
+		color: var(--gray-300);
+		font-weight: 400;
+		padding: 0.25rem 0.75rem;
+		background: var(--gray-999);
+		border: 1px solid var(--gray-800);
+		border-radius: var(--radius-full);
+		white-space: nowrap;
+	}
+
+	.bullets {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+	}
+
+	.bullets li {
+		position: relative;
+		padding-left: 1.4rem;
+		font-size: var(--text-base);
+		color: var(--gray-200);
+		line-height: 1.6;
+	}
+
+	.bullets li::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.6em;
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background: var(--gradient-accent);
+	}
+
+	.tags {
+		list-style: none;
+		margin: 1rem 0 0;
+		padding: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.tag {
+		font-size: var(--text-sm);
+		font-family: var(--font-brand);
+		font-weight: 500;
+		color: var(--gray-300);
+		padding: 0.3rem 0.85rem;
+		background: var(--accent-subtle-overlay);
+		border: 1px solid var(--accent-overlay);
+		border-radius: var(--radius-full);
+	}
+
+	@media (min-width: 50em) {
+		.section-head h2 {
+			font-size: var(--text-3xl);
+		}
+
+		.timeline-item {
+			gap: 2rem;
+		}
+
+		.job-card {
+			padding: 2rem;
+		}
+
+		.role {
+			font-size: var(--text-xl);
+		}
+	}
+</style>
